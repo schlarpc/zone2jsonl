@@ -9,6 +9,12 @@ I made this specifically to work with CZDS dumps, and error handling is mostly n
 nix run github:schlarpc/zone2jsonl -- some-zone-file
 ```
 
+or streaming from stdin:
+
+```
+cat some-zone-file | nix run github:schlarpc/zone2jsonl -- -
+```
+
 ## Performance
 
 Overall not great at the moment! Running zone-bench from simdzone on the .com zone file
