@@ -14,7 +14,10 @@ nix run github:schlarpc/zone2jsonl -- some-zone-file
 Overall not great at the moment! Running zone-bench from simdzone on the .com zone file
 takes about 45 seconds, and running it through this tool takes over 15 minutes.
 It's a little silly that we're going through the pipeline of `text -> wire format (simdzone) -> structs (ldns) -> text`,
-and the JSON serialization is just using the first library I came up with. I suspect this
-can be dramatically improved by working on those two aspects, but I haven't benchmarked anything yet.
+and the JSON serialization is just using the first library I came up with.
+
+Quick benchmarks show:
+* 30-40% of the time is spent in ldns_wire2rdf inside rr_from_rdata
+* 50% of the time is spent in JSON serialization, about 25% in object gen and the rest in json_dumps
 
 Memory usage is solid though and handles multi-GB inputs fine, since everything is streaming.
