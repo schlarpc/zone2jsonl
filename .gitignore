@@ -1,3 +1,5 @@
 /result
 *.jsonl
 *.parquet
+*.txt
+*.gz
