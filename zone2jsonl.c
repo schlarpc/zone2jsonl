@@ -35,6 +35,8 @@ char *all_rdf2str(ldns_rr *rr) {
       buffer = new_buffer;
     }
 
+    // TODO strip extra whitespace from NSEC3 salt
+    // see https://github.com/NLnetLabs/ldns/blob/b87b8e1d212b43f225891570ebc5045c6331dd8a/host2str.c#L931
     if (i > 0) {
       strcat(buffer, " ");
     }
