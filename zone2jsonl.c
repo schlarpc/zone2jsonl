@@ -49,7 +49,7 @@ char *all_rdf2str(ldns_rr *rr) {
 
 ldns_rr *rr_from_rdata(uint16_t type, uint16_t rdlength, const uint8_t *rdata) {
   ldns_rr_descriptor *rr_descriptor = ldns_rr_descript(type);
-  uint8_t *buffer = (uint8_t *)calloc(rdlength + 2, 1);
+  uint8_t *buffer = (uint8_t *)malloc(rdlength + 2);
   buffer[0] = (rdlength >> 8) & 0xFF;
   buffer[1] = rdlength & 0xFF;
   memcpy(buffer + 2, rdata, rdlength);
